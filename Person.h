@@ -1,28 +1,41 @@
-#include <iostream>
-#include "Person.h"
+//class Person serves as the base class as shown above. 
+//It has the data: name, age.
+//It has the methods: constructor(), getName(), getAge(), virtual void print().
+//Published by Yirui Wang 
+//Reference:http://www.cplusplus.com/forum/general/191841/           --Bdanielz
 
-class Student:public Person {
+#include <iostream>
+
+class Person {
 public:
-    Student();
-    Student(const std::string &name, const std::string &age, const std::string &major):Person(name, age)
+    Person();
+    Person(const std::string &name,const std::string &age)
     {
-        this->major = major;
+        this->name = name;
+        this->age = age;
     }
 
-    Student(Student&);
+    Person(Person&);
 
-    const std::string &getMajor()
+
+    const std::string &getName()
     {
-        return major;
+        return name;
+    }
+
+    const std::string &getAge()
+    {
+        return age;
     }
 
     virtual void print() 
     {
-	Person::print();
-	std::string M = "    Major:" + getMajor ();
-        std::cout << M << std::endl;
+        std::string N = "Name: " + getName ();
+	std::string A = "    Age:" + getAge ();
+        std::cout << N << A << std::endl;
     }
 
 private:
-    std::string major;
+    std::string name;
+    std::string age;
 };
